@@ -21,6 +21,6 @@ This is the general list of what you need to be able to run this:
   - [SmartThings MQTT Bridge](https://github.com/stjohnjohnson/smartthings-mqtt-bridge)
   - The Device flow has a configuration node where you enter:
     - BTLEID - the lowercase, without colons UUID for the device
-    - topic - the full name of the MQTT topic to publish (e.g. `/smartthings/<virtual device name>/presence`
+    - topic - the full name of the MQTT topic to publish (e.g. `/smartthings/<virtual device name>/presence`)
 - SmartThings
   - Virtual Presence device (one for each device flow above)
