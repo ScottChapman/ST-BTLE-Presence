@@ -1,0 +1,109 @@
+[
+    {
+        "id": "84039ba7.c8bb48",
+        "type": "tab",
+        "label": "BTLE Scan"
+    },
+    {
+        "id": "156473b5.fc0dcc",
+        "type": "scan ble",
+        "z": "84039ba7.c8bb48",
+        "uuids": "",
+        "duplicates": false,
+        "name": "",
+        "x": 951.5,
+        "y": 198,
+        "wires": [
+            [
+                "b47ce7a2.a8b5e8"
+            ]
+        ]
+    },
+    {
+        "id": "471fbcc1.b7c5c4",
+        "type": "inject",
+        "z": "84039ba7.c8bb48",
+        "name": "Scan Every 30 seconds",
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "repeat": "30",
+        "crontab": "",
+        "once": false,
+        "x": 223,
+        "y": 198,
+        "wires": [
+            [
+                "7bda4c53.c779c4"
+            ]
+        ]
+    },
+    {
+        "id": "7bda4c53.c779c4",
+        "type": "trigger",
+        "z": "84039ba7.c8bb48",
+        "op1": "on",
+        "op2": "off",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "28",
+        "extend": false,
+        "units": "s",
+        "reset": "",
+        "name": "stop after 28 seconds",
+        "x": 504,
+        "y": 198,
+        "wires": [
+            [
+                "1f3d8448.d197cc"
+            ]
+        ]
+    },
+    {
+        "id": "1f3d8448.d197cc",
+        "type": "function",
+        "z": "84039ba7.c8bb48",
+        "name": "Scan Command",
+        "func": "if (msg.payload === 'on') {\n    msg.payload = { scan: true};\n} else {\n    msg.payload = { scan: false};\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 740,
+        "y": 198,
+        "wires": [
+            [
+                "156473b5.fc0dcc"
+            ]
+        ]
+    },
+    {
+        "id": "b47ce7a2.a8b5e8",
+        "type": "mqtt out",
+        "z": "84039ba7.c8bb48",
+        "name": "Found Devices",
+        "topic": "BTLE/found",
+        "qos": "0",
+        "retain": "false",
+        "broker": "f12b3b93.96e338",
+        "x": 1191.5,
+        "y": 198,
+        "wires": []
+    },
+    {
+        "id": "f12b3b93.96e338",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
