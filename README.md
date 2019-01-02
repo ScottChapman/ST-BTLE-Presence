@@ -13,8 +13,8 @@ Each `Scanner` simply reports what BTLE devices is sees to a single MQTT topic. 
 This is the general list of what you need to be able to run this:
 - Scanner
   - Node-Red (current is fine)
-    - node-red-contrib-noble - contrib module (others might work, but this is what I've used here)
-  - Node 8.10.1 (needed for the specific BTLE scanner)
+    - [node-red-contrib-noble](https://flows.nodered.org/node/node-red-contrib-noble) - contrib module (others might work, but this is what I've used here)
+  - Node 8.11.1 (needed for the specific BTLE scanner - see [issue](https://github.com/noble/node-bluetooth-hci-socket/issues/95))
 - Device Handler
   - Node-Red (current is fine)
   - Node (current is also fine)
@@ -24,3 +24,5 @@ This is the general list of what you need to be able to run this:
     - topic - the full name of the MQTT topic to publish (e.g. `/smartthings/<virtual device name>/presence`)
 - SmartThings
   - Virtual Presence device (one for each device flow above)
+  
+NOTE: To make it easier to run a specific version of Node I recommend running [Node Version Manager](https://github.com/creationix/nvm)
